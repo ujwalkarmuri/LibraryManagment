@@ -38,17 +38,19 @@ const App = () => {
     async function firestoreData() {
       let tempMembers = [];
       let tempBooks = [];
+      console.log("Entered...dindi")
       try {
         const q1 = query(collection(db, "members"), orderBy("memId"));
         const querySnapshot1 = await getDocs(q1);
-        console.log(querySnapshot1)
+        // console.log(querySnapshot1)
         querySnapshot1.forEach((doc) => {
           tempMembers.push(doc.data());
         });
         const q2 = query(collection(db, "books"), orderBy("bookId"));
-        console.log(q2.docs)
+        // console.log(q2.docs)
         const querySnapshot2 = await getDocs(q2);
         querySnapshot2.forEach((doc) => {
+          console.log("Reached update...")
           tempBooks.push(doc.data());
         });
       } catch (err) {
@@ -159,11 +161,6 @@ const App = () => {
     },
   ]);
 
-  return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
-  );
   return (
     <div>
       <RouterProvider router={router} />
